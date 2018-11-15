@@ -1,0 +1,60 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="for-mobile"></div>
+  <div class="heading-for-mobile">
+    <h1>This expreience is made for larger screens, please enlarge your screen</h1>
+  </div>
+  <div class="main-wrapper">
+    <video autoplay muted loop preload="auto" id='bg-video'>
+      <source src="https://d17tmcbwz7rkl7.cloudfront.net/media/HD_BEACH_BATCH_2_GIF_22.mp4" type="video/mp4">
+      </video>
+      <video autoplay loop preload="auto" loop class="transition">
+        <source src="https://wooohooo.com/videos/quick-desktop.mp4" type="video/mp4">
+        </video>
+        <canvas id="another-border"></canvas>
+        <button class="expanding-button">
+          <span>
+            <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" stroke="none" fill="white">
+              <path xmlns="http://www.w3.org/2000/svg" fill="white" d="M0.278,9.439l7.326-6.061c0,0,0.868-0.919,0.868,0.078c0,0.999,0,3.416,0,3.416s0.589,0,1.489,0    c2.579,0,7.265,0,9.173,0c0,0,0.519-0.137,0.519,0.65c0,0.789,0,4.244,0,4.807s-0.434,0.55-0.434,0.55c-1.855,0-6.703,0-9.195,0    c-0.807,0-1.333,0-1.333,0s0,1.936,0,3.154c0,1.214-0.912,0.298-0.912,0.298s-6.843-5.155-7.562-5.874    C-0.305,9.936,0.278,9.439,0.278,9.439z"/>
+            </svg>
+          </span>
+          <svg class="border" width=50 height=50>
+            <ellipse cx="26.9294" cy="31.5664" rx="22.703" ry="22.703" fill="none" stroke="yellow" stroke-width="3" stroke-linecap="butt" stroke-linejoin="miter" opacity="1" transform="matrix(1 0 0 1 -1.64374 -6.42542)"></ellipse>
+          </svg>
+        </button>
+        <div class="heading">
+          <h1>Jump Over The Waves</h1>
+        </div>
+        <div class="buttons-wrapper">
+          <button class="morphing-button show-button" onclick="loadVideo()">
+            <span>Give me another one
+
+            </span>
+            <svg class="border" width=250 height=50>
+              <path d="M 30 0 L 220 0 C 236.5685424949238 7.257531513090159e-16 250 9.608307876516529 250 21.460756301879883 L 250 21.460756301879883 C 250 33.31320472724324 236.5685424949238 42.921512603759766 220 42.921512603759766 L 30 42.921512603759766 C 13.431457505076196 42.921512603759766 2.0290612532945333e-15 33.31320472724324 0 21.460756301879883 L 0 21.460756301879883 C -2.0290612532945333e-15 9.608307876516527 13.4314575050762 2.1772594539270477e-15 30 0 Z" transform="matrix(1 0 0 1 2.94644 3.78329)" stroke-width="3" stroke="yellow" fill="none" selected="true"></path>
+            </svg>
+          </button>
+          <button class="morphing-button confirm-button">
+            <span>
+              confirm
+              <svg class="arrow" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke="none" fill="white">
+                <path d="M8.122 24l-4.122-4 8-8-8-8 4.122-4 11.878 12z"/>
+              </svg>
+            </span>
+            <svg class="border" width=150 height=50>
+              <path d="M 30 0 L 106.80862426757812 0 C 123.37716676250193 7.627192518492356e-16 136.80862426757812 10.097705234756127 136.80862426757812 22.553855895996094 " stroke-width="2.7767876386642456" stroke="yellow" fill="none" transform="matrix(1 0 0 1 6.74106 2.66999)"></path>
+            </button>
+          </div>
+        </div>
+      </body>
+      <script src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"></script>
+      <script src="paper-full.js"></script>
+      <script src="anime.js"></script>
+      <script src="app.js"></script>
+      </html>

@@ -1,0 +1,172 @@
+
+/**
+* Background Video
+**/
+
+video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#bg-video source {
+  -webkit-transition: src 5s ease-in-out;
+  -o-transition: src 5s ease-in-out;
+  transition: src 5s ease-in-out;
+}
+
+/**
+* Buttons
+**/
+
+
+/* The button themselves */
+
+button {
+  background: transparent;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 700;
+  line-height: 2.5rem;
+  white-space: nowrap;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:focus {
+  border: none;
+  outline: none;
+}
+
+button span {
+  position: absolute;
+  left: 40px;
+  top: 15px;
+}
+
+/* The border for all buttons */
+
+.border {
+  position: fixed;
+  overflow: visible;
+}
+
+/* Bottom Buttons */
+
+.buttons-wrapper {
+  position: fixed;
+  top: 90vh;
+  width: 90vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding-left: 5vw;
+  -ms-flex-wrap:  nowrap;
+  flex-wrap:  nowrap;
+}
+
+.morphing-button {
+  position: relative;
+  bottom: 50;
+}
+
+.confirm-button {
+  right: 10vw;
+  opacity: 0;
+}
+
+.confirm-button span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.confirm-button .arrow {
+  padding-left: 15px;
+}
+
+
+.expanding-button .arrow {
+  padding-top: 10px;
+}
+
+
+/* Top Button */
+
+.expanding-button {
+  left: 5vw;
+  top: 2vw;
+  position: fixed;
+}
+
+.expanding-button span {
+  left: 25px;
+}
+
+/**
+* Title
+**/
+
+.heading {
+  position: fixed;
+  bottom: 70;
+  font-size: 3em;
+  color: #f1f1f1;
+  width: 40%;
+  padding: 50px;
+  opacity: 0;
+}
+
+/**
+* General classes to be toggled in js
+**/
+
+.transition {
+  opacity: 0;
+}
+
+/**
+* For mobiles and small screens
+**/
+
+.for-mobile, .heading-for-mobile {
+  display: none;
+}
+
+/*
+* Media Queries
+*/
+
+@media (max-width: 1280px) and (max-height: 900px) {
+  .main-wrapper {
+    display: none;
+  }
+
+  .for-mobile {
+    display: block;
+    position: fixed;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: url('https://wooohooo.com/images/small-viewport-bg.jpg');
+    background-position: center;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+
+  }
+
+  .heading-for-mobile {
+    bottom: 70;
+    font-size: 1em;
+    color: #FFF;
+    display: block;
+    position: absolute;
+  }
+}
