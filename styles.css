@@ -144,7 +144,7 @@ button span {
 * Media Queries
 */
 
-@media (max-width: 1280px), (max-height: 650px) {
+@media (max-width: 1000px), (max-height: 650px) {
   .main-wrapper {
     display: none;
   }
