@@ -133,11 +133,12 @@ $(".expanding-button").mouseenter(function() {
   })
 });
 
-// Listeners for creating hover effects on bottom Buttons
 
+// Listeners for creating hover effects on bottom Buttons
+// TODO make the two buttons use the same function
 $(".show-button").mousemove(function(event) {
   var shape = new paper.Shape.Ellipse({
-    center: [setCenterX(event.offsetX, 197, 50), setCenterY(event.offsetY, 26, 25)],
+    center: [setCenter(event.offsetX, 200, 50), setCenter(event.offsetY, 26, 25)],
     radius: [125, 27],
     strokeColor: 'yellow',
     strokeWidth: '3px'
@@ -162,25 +163,26 @@ $(".show-button").mousemove(function(event) {
 
 $(".confirm-button").mousemove(function(event) {
   var shape = new paper.Shape.Ellipse({
-    center: [setCenterX(event.offsetX, 115, 35), setCenterY(event.offsetY, 26, 25)],
+    center: [setCenter(event.offsetX, 115, 35), setCenter(event.offsetY, 26, 25)],
     radius: [75, 27],
     strokeColor: 'yellow',
     strokeWidth: '3px'
   });
   let ellipse = shape.toPath();
+
   if (event.offsetX > 75) {
     ellipse.removeSegment(2);
   } else {
     ellipse.removeSegment(0);
   }
-  // ellipse.smooth();
+
   let merged = roundRectSmall.unite(ellipse);
-  // merged.smooth({ type: 'continuous', factor: 0.});
   let mergedPath = merged.pathData;
   $(".confirm-button .border path").attr("d", mergedPath);
   anime({
     targets: this,
-    scale: 1.08
+    scale: 1.08,
+    elasticity: 800
   })
 });
 
@@ -199,6 +201,22 @@ $(".show-button").mouseout(function (e) {
     scale: 1
   })
 });
+
+
+// a function to draw ellipse from a given center point
+function drawEllipse() {
+
+}
+
+// a function to draw a rounded rectangle
+function drawRoundRect() {
+
+}
+
+//a function to create a merged path from two shapes
+function drawMergedPath() {
+  
+}
 
 // a function to happen every time a video is loaded
 
@@ -222,25 +240,16 @@ function loadVideo() {
 
 // Helper Functions
 
-function setCenterX(x, maxX, minX) {
-  if ( x < maxX && x > minX) {
-    return x;
-  } else if ( x > maxX ){
-    return maxX;
+function setCenter(num, max, min) {
+  if ( num < max && num > min) {
+    return num;
+  } else if ( num > max ){
+    return max;
   } else {
-    return minX;
+    return min;
   }
 };
 
-function setCenterY(y, maxY, minY) {
-  if ( y < maxY && y > minY) {
-    return y;
-  } else if ( y > maxY ){
-    return maxY;
-  } else {
-    return minY;
-  }
-};
 
 function random(len) {
   return Math.floor(Math.random() * len);
