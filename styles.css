@@ -144,7 +144,7 @@ button span {
 * Media Queries
 */
 
-@media (max-width: 1280px) and (max-height: 900px) {
+@media (max-width: 1280px), (max-height: 900px) {
   .main-wrapper {
     display: none;
   }
@@ -156,6 +156,7 @@ button span {
     min-height: 100vh;
     background-image: url('https://wooohooo.com/images/small-viewport-bg.jpg');
     background-position: center;
+    background-size: cover;
     left: 0;
     top: 0;
     background-repeat: no-repeat;
@@ -165,8 +166,15 @@ button span {
   .heading-for-mobile {
     bottom: 70;
     font-size: 1em;
+    max-width: 70vw;
     color: #FFF;
+    background-color: rgba(0, 0, 0, 0.3);
     display: block;
     position: absolute;
+    margin-left: 20px;
+  }
+
+  .heading-for-mobile h1 {
+    padding-left: 20px;
   }
 }
