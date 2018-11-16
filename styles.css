@@ -74,7 +74,7 @@ button span {
 
 .morphing-button {
   position: relative;
-  bottom: 50;
+  bottom: 50px;
 }
 
 .confirm-button {
@@ -116,7 +116,7 @@ button span {
 
 .heading {
   position: fixed;
-  bottom: 70;
+  bottom: 70px;
   font-size: 3em;
   color: #f1f1f1;
   width: 40%;
@@ -154,17 +154,13 @@ button span {
     position: fixed;
     min-width: 100vw;
     min-height: 100vh;
-    background-image: url('https://wooohooo.com/images/small-viewport-bg.jpg');
-    background-position: center;
-    background-size: cover;
+    background: url('https://wooohooo.com/images/small-viewport-bg.jpg') center/cover no-repeat;
     left: 0;
     top: 0;
-    background-repeat: no-repeat;
-
   }
 
   .heading-for-mobile {
-    bottom: 70;
+    bottom: 70px;
     font-size: 1em;
     max-width: 70vw;
     color: #FFF;

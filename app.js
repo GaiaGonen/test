@@ -1,4 +1,4 @@
-'use strict'
+"use strict";
 
 // Resources
 
@@ -69,7 +69,6 @@ let video = document.getElementById("bg-video");
 
 loadVideo();
 
-$(".heading h1").text(currVid.title);
 
 // a listener to create a video transition effect
 
@@ -107,23 +106,24 @@ video.addEventListener('loadeddata', function() {
   }, 2000)
 }, false);
 
-// a function to happen every time a video is loaded
+// execute every time a video is loaded
 function loadVideo() {
   currVid = videos[random(videos.length)];
+  $(".heading h1").text(currVid.title);
   anime({
     targets: video,
     opacity: 0,
     delay: 500
-  })
+  });
   anime({
     targets: ".transition",
     opacity: 1
-  })
+  });
   $(".confirm-button").css("opacity", 0);
   $(".heading").css("opacity", 0);
   $("#bg-video source").attr("src", currVid.url);
   video.load();
-};
+}
 
 // Animations for buttons
 
@@ -131,7 +131,7 @@ $(".expanding-button").mouseenter(function() {
   anime({
     targets: '.expanding-button .border',
     scale: [2, 1]
-  })
+  });
 });
 
 // creating paperjs objects to create bottom buttons border
@@ -141,7 +141,7 @@ paper.setup(canvas);
 let roundRectBig = drawRoundRect(0, 0, 250, 50, 30, 30);
 let roundRectSmall = drawRoundRect(0, 0, 150, 50, 30, 30);
 
-// Drawing the first bottom buttons
+// Initial button borders
 
 $(".show-button .border path").attr("d", getPath(roundRectBig));
 $(".confirm-button .border path").attr("d", getPath(roundRectSmall));
@@ -149,7 +149,7 @@ $(".confirm-button .border path").attr("d", getPath(roundRectSmall));
 
 // Listeners for creating hover effects on bottom Buttons
 // TODO fix the jumping bug when hovering a button
-// TODO fix the bug on the small button when the border seprates in some of the merges
+// TODO fix the bug on the small button when the border separates in some of the merges
 
 $(".show-button").mousemove(function(event) {
   hoverEffect(250, 50, event, $(".show-button .border path"), roundRectBig);
@@ -169,16 +169,18 @@ $(".show-button").mouseout(function (e) {
   rmHoverEffect($(".show-button .border path"), roundRectBig);
 });
 
-// a function to create a hover effect based on where the mouse is
+// create hover effect based on where the mouse is
 function hoverEffect(rectWidth, rectHeight, e, buttonPath, rectObj) {
   let ellipse = drawEllipse(centerBounds(e.offsetX, rectWidth-rectWidth/5, rectWidth/5), centerBounds(e.offsetY, rectHeight/2+1, rectHeight/2), rectWidth/2, rectHeight/2+2);
   let roundRect = rectObj;
 
+  // remove ellipse's segment that is closer to the end of rect where the mouse pointer is
+  // to create a cleaner animation
   if (event.offsetX > rectWidth/2) {
     ellipse.removeSegment(2);
   } else {
     ellipse.removeSegment(0);
-  }
+  };
 
   let mergedPath = drawMergedPath(ellipse, roundRect);
   $(buttonPath).attr("d", mergedPath);
@@ -187,8 +189,7 @@ function hoverEffect(rectWidth, rectHeight, e, buttonPath, rectObj) {
     targets: buttonPath,
     scale: 1.08,
   });
-
-};
+}
 
 function rmHoverEffect(buttonPath, rectObj) {
   buttonPath.attr("d", getPath(rectObj));
@@ -198,27 +199,25 @@ function rmHoverEffect(buttonPath, rectObj) {
   });
 }
 
-// a function to draw ellipse from a given center point
+// draw ellipse from a given center point
 // returns a Path object of an ellipse
 function drawEllipse(cx, cy, xr, yr) {
   let shape = new paper.Shape.Ellipse({
     center: [cx, cy],
     radius: [xr, yr]
   });
-  let ellipse = shape.toPath();
-  return ellipse;
+  return shape.toPath();
 }
 
-// a function to draw a rounded rectangle
+// draw a rounded rectangle
 // returns a roundRectangle object
 function drawRoundRect(cx, cy, width, height, rx, ry) {
   let rect = new paper.Rectangle(cx, cy, width, height);
   let cornerSize = new paper.Size(rx, ry);
-  let roundRect = new paper.Path.RoundRectangle(rect, cornerSize);
-  return roundRect;
+  return new paper.Path.RoundRectangle(rect, cornerSize);
 }
 
-// a function to create a merged path from two shapes
+// create a merged path from two shapes
 // params should be Path objects
 // Returns a path string of the merged Path object
 function drawMergedPath(Path1, Path2) {
@@ -226,23 +225,17 @@ function drawMergedPath(Path1, Path2) {
   return getPath(merged);
 }
 
-// a function to return the path in string form from Path items
+// return the path in string form from Path items
 function getPath(Path) {
   return Path.pathData;
 }
 
 // Keeping the bounds on mouse movement inside buttons with hover effect
 function centerBounds(num, max, min) {
-  if ( num < max && num > min) {
-    return num;
-  } else if ( num > max ){
-    return max;
-  } else {
-    return min;
-  }
-};
+  return Math.min(Math.max(num, min), max);
+}
 
 // returns a random n from 0 to len
 function random(len) {
   return Math.floor(Math.random() * len);
-};
+}
