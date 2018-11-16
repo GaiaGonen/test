@@ -1,3 +1,5 @@
+'use strict'
+
 // Resources
 
 let videos = [
@@ -60,9 +62,6 @@ let videos = [
 ];
 
 
-
-
-
 // init the video
 
 let currVid;
@@ -108,6 +107,24 @@ video.addEventListener('loadeddata', function() {
   }, 2000)
 }, false);
 
+// a function to happen every time a video is loaded
+function loadVideo() {
+  currVid = videos[random(videos.length)];
+  anime({
+    targets: video,
+    opacity: 0,
+    delay: 500
+  })
+  anime({
+    targets: ".transition",
+    opacity: 1
+  })
+  $(".confirm-button").css("opacity", 0);
+  $(".heading").css("opacity", 0);
+  $("#bg-video source").attr("src", currVid.url);
+  video.load();
+};
+
 // Animations for buttons
 
 $(".expanding-button").mouseenter(function() {
@@ -117,35 +134,7 @@ $(".expanding-button").mouseenter(function() {
   })
 });
 
-
-// Listeners for creating hover effects on bottom Buttons
-// TODO fix the jumping bug when hovering a button
-// TODO make the two buttons use the same function
-$(".show-button").mousemove(function(event) {
-  hoverEffect(250, 50, event, $(".show-button .border path"), roundRectBig);
-});
-
-$(".confirm-button").mousemove(function(event) {
-  hoverEffect(150, 50, event, $(".confirm-button .border path"), roundRectSmall);
-});
-
-$(".confirm-button").mouseout(function (e) {
-  $(".confirm-button .border path").attr("d", getPath(roundRectSmall));
-  anime({
-    targets: this,
-    scale: 1
-  });
-});
-
-$(".show-button").mouseout(function (e) {
-  $(".show-button .border path").attr("d", getPath(roundRectBig));
-  anime({
-    targets: this,
-    scale: 1
-  })
-});
-
-// creating paperjs objects to create bottom buttons hover effects
+// creating paperjs objects to create bottom buttons border
 
 let canvas = $("#another-border");
 paper.setup(canvas);
@@ -156,6 +145,29 @@ let roundRectSmall = drawRoundRect(0, 0, 150, 50, 30, 30);
 
 $(".show-button .border path").attr("d", getPath(roundRectBig));
 $(".confirm-button .border path").attr("d", getPath(roundRectSmall));
+
+
+// Listeners for creating hover effects on bottom Buttons
+// TODO fix the jumping bug when hovering a button
+// TODO fix the bug on the small button when the border seprates in some of the merges
+
+$(".show-button").mousemove(function(event) {
+  hoverEffect(250, 50, event, $(".show-button .border path"), roundRectBig);
+});
+
+$(".confirm-button").mousemove(function(event) {
+  hoverEffect(150, 50, event, $(".confirm-button .border path"), roundRectSmall);
+});
+
+// listeners for canceling hover effect on bottom buttons
+
+$(".confirm-button").mouseout(function (e) {
+  rmHoverEffect($(".confirm-button .border path"), roundRectSmall);
+});
+
+$(".show-button").mouseout(function (e) {
+  rmHoverEffect($(".show-button .border path"), roundRectBig);
+});
 
 // a function to create a hover effect based on where the mouse is
 function hoverEffect(rectWidth, rectHeight, e, buttonPath, rectObj) {
@@ -172,14 +184,18 @@ function hoverEffect(rectWidth, rectHeight, e, buttonPath, rectObj) {
   $(buttonPath).attr("d", mergedPath);
 
   anime({
-    targets: this,
+    targets: buttonPath,
     scale: 1.08,
   });
 
 };
 
-function rmHoverEffect() {
-
+function rmHoverEffect(buttonPath, rectObj) {
+  buttonPath.attr("d", getPath(rectObj));
+  anime({
+    targets: buttonPath,
+    scale: 1
+  });
 }
 
 // a function to draw ellipse from a given center point
@@ -215,27 +231,7 @@ function getPath(Path) {
   return Path.pathData;
 }
 
-// a function to happen every time a video is loaded
-function loadVideo() {
-  currVid = videos[random(videos.length)];
-  anime({
-    targets: video,
-    opacity: 0,
-    delay: 500
-  })
-  anime({
-    targets: ".transition",
-    opacity: 1
-  })
-  $(".confirm-button").css("opacity", 0);
-  $(".heading").css("opacity", 0);
-  $("#bg-video source").attr("src", currVid.url);
-  video.load();
-};
-
-
-// Helper Functions
-
+// Keeping the bounds on mouse movement inside buttons with hover effect
 function centerBounds(num, max, min) {
   if ( num < max && num > min) {
     return num;
@@ -246,7 +242,7 @@ function centerBounds(num, max, min) {
   }
 };
 
-
+// returns a random n from 0 to len
 function random(len) {
   return Math.floor(Math.random() * len);
 };
