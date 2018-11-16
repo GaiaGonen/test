@@ -1,8 +1,9 @@
 ## A test duplicating an existing webpage.
 
-# Made using the frameworks:
-  AnimeJS
-  paper.js
-  jQuery
+### Made using the frameworks:
+  * AnimeJS
+  * paper.js
+  * jQuery
 
-Live example
+[Live example](https://gaiagonen.github.io/test/
+)
