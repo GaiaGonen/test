@@ -80,21 +80,26 @@ button span {
 }
 
 .confirm-button {
-  right: 10vw;
+  margin-right: 10vw;
   opacity: 0;
 }
 
-.confirm-button span {
+.show-button .border {
+  left: 7vw;
+}
+.confirm-button span, .show-button span {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.confirm-button .arrow {
+.confirm-button .arrow, .show-button .dice {
   padding-left: 15px;
 }
 
-
+.for-small-screen {
+  display: none;
+}
 
 
 /* Top Button */
@@ -125,6 +130,7 @@ button span {
   width: 40%;
   padding: 50px;
   opacity: 0;
+  padding-left: 7vw;
 }
 
 /**
@@ -177,3 +183,34 @@ margin-left: 20px;
 padding-left: 20px;
 }
 } */
+
+
+@media (max-width: 800px) {
+  .confirm-button {
+    right: 15vw;
+  }
+
+  .heading {
+    font-size: 1.5em;
+  }
+
+  .show-button .border {
+    display: none;
+  }
+
+  .show-button .for-small-screen {
+    display: block;
+  }
+
+  .show-button .text {
+    display: none;
+  }
+
+  .show-button .dice {
+    padding-top: 7px;
+  }
+
+  .show-button span {
+    left: 0.7vw;
+  }
+}

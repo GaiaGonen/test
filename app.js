@@ -138,7 +138,7 @@ $(".expanding-button").mouseenter(function() {
 
 let canvas = $("#another-border");
 paper.setup(canvas);
-let roundRectBig = drawRoundRect(0, 0, 250, 50, 30, 30);
+let roundRectBig = drawRoundRect(0, 0, 270, 50, 30, 30);
 let roundRectSmall = drawRoundRect(0, 0, 150, 50, 30, 30);
 
 // Initial button borders
@@ -152,7 +152,7 @@ $(".confirm-button .border path").attr("d", getPath(roundRectSmall));
 // TODO fix the bug on the small button when the border separates in some of the merges
 
 $(".show-button").mousemove(function(event) {
-  hoverEffect(250, 50, event, $(".show-button .border path"), roundRectBig);
+  hoverEffect(270, 50, event, $(".show-button .border path"), roundRectBig);
 });
 
 $(".confirm-button").mousemove(function(event) {
