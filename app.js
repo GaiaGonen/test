@@ -76,7 +76,7 @@ video.addEventListener('loadeddata', function() {
   anime({
     targets: video,
     opacity: 1,
-    scale: [5, 1],
+    // scale: [5, 1],
     easing: 'easeInOutQuart'
   });
   anime({

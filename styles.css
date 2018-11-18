@@ -5,10 +5,12 @@
 
 video {
   position: fixed;
-  right: 0;
-  bottom: 0;
   min-width: 100vw;
   min-height: 100vh;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 #bg-video source {
@@ -60,7 +62,7 @@ button span {
 .buttons-wrapper {
   position: fixed;
   top: 90vh;
-  width: 90vw;
+  width: 85vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -93,9 +95,6 @@ button span {
 }
 
 
-.expanding-button .arrow {
-  padding-top: 10px;
-}
 
 
 /* Top Button */
@@ -104,6 +103,10 @@ button span {
   left: 5vw;
   top: 2vw;
   position: fixed;
+}
+
+.expanding-button .arrow {
+  padding-top: 10px;
 }
 
 .expanding-button span {
@@ -117,7 +120,7 @@ button span {
 .heading {
   position: fixed;
   bottom: 70px;
-  font-size: 3em;
+  font-size: 2em;
   color: #f1f1f1;
   width: 40%;
   padding: 50px;
@@ -143,34 +146,34 @@ button span {
 /*
 * Media Queries
 */
-
+/*
 @media (max-width: 1000px), (max-height: 650px) {
-  .main-wrapper {
-    display: none;
-  }
-
-  .for-mobile {
-    display: block;
-    position: fixed;
-    min-width: 100vw;
-    min-height: 100vh;
-    background: url('https://wooohooo.com/images/small-viewport-bg.jpg') center/cover no-repeat;
-    left: 0;
-    top: 0;
-  }
-
-  .heading-for-mobile {
-    bottom: 70px;
-    font-size: 1em;
-    max-width: 70vw;
-    color: #FFF;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: block;
-    position: absolute;
-    margin-left: 20px;
-  }
-
-  .heading-for-mobile h1 {
-    padding-left: 20px;
-  }
+.main-wrapper {
+display: none;
 }
+
+.for-mobile {
+display: block;
+position: fixed;
+min-width: 100vw;
+min-height: 100vh;
+background: url('https://wooohooo.com/images/small-viewport-bg.jpg') center/cover no-repeat;
+left: 0;
+top: 0;
+}
+
+.heading-for-mobile {
+bottom: 70px;
+font-size: 1em;
+max-width: 70vw;
+color: #FFF;
+background-color: rgba(0, 0, 0, 0.3);
+display: block;
+position: absolute;
+margin-left: 20px;
+}
+
+.heading-for-mobile h1 {
+padding-left: 20px;
+}
+} */
