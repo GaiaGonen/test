@@ -87,6 +87,11 @@ button span {
 .show-button .border {
   left: 7vw;
 }
+
+.text {
+  margin: 0;
+}
+
 .confirm-button span, .show-button span {
   display: flex;
   justify-content: space-between;
@@ -124,7 +129,7 @@ button span {
 
 .heading {
   position: fixed;
-  bottom: 70px;
+  bottom: 10vh;
   font-size: 2em;
   color: #f1f1f1;
   width: 40%;
@@ -199,7 +204,7 @@ padding-left: 20px;
   }
 
   .show-button .for-small-screen {
-    display: block;
+    display: inline-block;
   }
 
   .show-button .text {
@@ -209,6 +214,7 @@ padding-left: 20px;
   .show-button .dice {
     padding-top: 7px;
     padding-left: 3px;
+    display: fixed;
   }
 
   .show-button span {
