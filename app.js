@@ -169,6 +169,11 @@ $(".show-button").mouseout(function (e) {
   rmHoverEffect($(".show-button .border path"), roundRectBig);
 });
 
+const screen = window.matchMedia( "(max-width: 481px)" );
+if (screen.matches) {
+  $(".confirm-button").off('mousemove');
+}
+
 // create hover effect based on where the mouse is
 function hoverEffect(rectWidth, rectHeight, e, buttonPath, rectObj) {
   let ellipse = drawEllipse(centerBounds(e.offsetX, rectWidth-rectWidth/5, rectWidth/5), centerBounds(e.offsetY, rectHeight/2+1, rectHeight/2), rectWidth/2, rectHeight/2+2);

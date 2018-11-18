@@ -187,7 +187,7 @@ padding-left: 20px;
 
 @media (max-width: 800px) {
   .confirm-button {
-    right: 15vw;
+    right: 25vw;
   }
 
   .heading {
@@ -208,9 +208,10 @@ padding-left: 20px;
 
   .show-button .dice {
     padding-top: 7px;
+    padding-left: 3px;
   }
 
   .show-button span {
-    left: 0.7vw;
+    left: auto;
   }
 }
