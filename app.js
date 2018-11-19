@@ -72,9 +72,10 @@ loadVideo();
 
 // a listener to create a video transition effect
 
-video.addEventListener('loadeddata', function() {
+video.addEventListener('loadeddata', function(e) {
+  e.preventDefault();
   anime({
-    targets: video,
+    targets: "#bg-video",
     opacity: 1,
     // scale: [5, 1],
     easing: 'easeInOutQuart'
@@ -111,7 +112,7 @@ function loadVideo() {
   currVid = videos[random(videos.length)];
   $(".heading h1").text(currVid.title);
   anime({
-    targets: video,
+    targets: "#bg-video",
     opacity: 0,
     delay: 500
   });
